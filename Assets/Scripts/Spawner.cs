@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
 
     private Ray _ray;
     private RaycastHit _hitInfo;
+    private Camera _camera;
     private Cube _interactedCube;
     private Exploder _exploder;
 
@@ -23,11 +24,12 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         _exploder = GetComponent<Exploder>();
+        _camera = Camera.main;
     }
 
     private void Update()
     {
-        _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        _ray = _camera.ScreenPointToRay(Input.mousePosition);
 
         if (Input.GetMouseButtonUp(0) && Physics.Raycast(_ray, out _hitInfo))
         {

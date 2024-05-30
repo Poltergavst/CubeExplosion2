@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Теперь реализуем именно взрыв, в случае если не происходит создание новых кубов.
+//При нажатии на куб, он взрывается и исчезает, толкая другие кубы в разные стороны.
+//Взрыв, действует в некоторой области. Чем дальше объект от центра взрыва, тем меньше силы будет приложено на объект.
+//Чем меньше куб, тем больше радиус и сила с которой он раскидывает другие кубы.
+
 public class Exploder : MonoBehaviour
 {
     [SerializeField] private int _baseExplosionRadius = 100;
     [SerializeField] private int _baseExplosionForce = 100;
+
     private float _explosionRadius;
     private float _explosionForce;
 
